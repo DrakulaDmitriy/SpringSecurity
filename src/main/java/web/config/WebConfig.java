@@ -15,13 +15,11 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 @EnableWebMvc
 @ComponentScan("web")
 public class WebConfig implements WebMvcConfigurer {
-
     private final ApplicationContext applicationContext;
 
     public WebConfig(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
-
 
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
@@ -39,7 +37,6 @@ public class WebConfig implements WebMvcConfigurer {
         templateEngine.setEnableSpringELCompiler(true);
         return templateEngine;
     }
-
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
