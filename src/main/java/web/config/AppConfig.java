@@ -22,20 +22,20 @@ import java.util.Properties;
 @PropertySource("classpath:db.properties")
 @ComponentScan("web")
 public class AppConfig {
-    private final Environment env;
+    private final Environment environment;
 
     @Autowired
     public AppConfig(Environment env) {
-        this.env = env;
+        this.environment = env;
     }
 
     @Bean
     public DataSource getDataSource() {
         DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-        driverManagerDataSource.setDriverClassName(env.getRequiredProperty("db.driver"));
-        driverManagerDataSource.setUrl(env.getProperty("db.url"));
-        driverManagerDataSource.setUsername(env.getProperty("db.username"));
-        driverManagerDataSource.setPassword(env.getProperty("db.password"));
+        driverManagerDataSource.setDriverClassName(environment.getRequiredProperty("db.driver"));
+        driverManagerDataSource.setUrl(environment.getProperty("db.url"));
+        driverManagerDataSource.setUsername(environment.getProperty("db.username"));
+        driverManagerDataSource.setPassword(environment.getProperty("db.password"));
         return driverManagerDataSource;
     }
 
@@ -61,9 +61,9 @@ public class AppConfig {
 
     private Properties hibernateProperties() {
         Properties hibernateProperties = new Properties();
-        hibernateProperties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
-        hibernateProperties.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
-        hibernateProperties.put("hibernate.hbm2ddl.auto", env.getRequiredProperty("hibernate.hbm2ddl.auto"));
+        hibernateProperties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
+        hibernateProperties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
+        hibernateProperties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
         return hibernateProperties;
     }
 }
