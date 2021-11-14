@@ -15,4 +15,6 @@ public interface UserDao {
     List<User> getAllUsers();
 
     User getUserById(long id);
+
+    User getUserByLogin(String login);
 }
