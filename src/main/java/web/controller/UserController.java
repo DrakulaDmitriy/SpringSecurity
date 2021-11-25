@@ -6,11 +6,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import web.service.UserService;
 
 @Controller
-@RequestMapping("/")
 public class UserController {
     private final UserService userService;
 
@@ -19,7 +17,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping(value = "login")
+    @GetMapping(value = "/login")
     public String loginPage() {
         return "login";
     }
